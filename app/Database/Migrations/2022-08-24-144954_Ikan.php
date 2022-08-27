@@ -9,7 +9,7 @@ class Ikan extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
+            'id_ikan'          => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'auto_increment' => true
@@ -26,12 +26,12 @@ class Ikan extends Migration
                 'type'           => 'TEXT',
                 'null'           => true,
             ],
-            'ketersediaan'      => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '30',
-                'default'        => 'draft',
+            'tersedia'      => [
+                'type'           => 'INT',
+                'constraint'     => '1',
+                'null'        => true
             ],
-            'stock'      => [
+            'stok'      => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '20',
             ],
@@ -42,7 +42,7 @@ class Ikan extends Migration
         ]);
 
         // Membuat primary key
-        $this->forge->addKey('id', TRUE);
+        $this->forge->addKey('id_ikan', TRUE);
 
         // Membuat tabel news
         $this->forge->createTable('tbl_ikan', TRUE);

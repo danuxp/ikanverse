@@ -3,148 +3,135 @@
 <?= $this->section('content') ?>
 
 
-<!-- Modal Tambah-->
-<div class="modal fade" id="modalTambah" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel1">Tambah Data</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col mb-3">
-                        <label for="nameBasic" class="form-label">Name</label>
-                        <input type="text" id="nameBasic" class="form-control" placeholder="Enter Name" />
-                    </div>
-                </div>
-                <div class="row g-2">
-                    <div class="col mb-0">
-                        <label for="emailBasic" class="form-label">Email</label>
-                        <input type="text" id="emailBasic" class="form-control" placeholder="xxxx@xxx.xx" />
-                    </div>
-                    <div class="col mb-0">
-                        <label for="dobBasic" class="form-label">DOB</label>
-                        <input type="text" id="dobBasic" class="form-control" placeholder="DD / MM / YY" />
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Close
-                </button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end modal -->
-
-
-<!-- Modal selengkapnya -->
-<div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalScrollableTitle">Cara Budidaya</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis
-                    in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
-                    vestibulum at eros.
-                </p>
-                <p>
-                    Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                    Vivamus sagittis
-                    lacus vel augue laoreet rutrum faucibus dolor auctor.
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Close
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-
-
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Pengetahuan Ikan /</span> Jenis Ikan </h4>
 
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-4">
-                <div class="demo-inline-spacing ms-4 mb-4">
-                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalTambah">
-                        <i class="bx bx-plus"></i> Tambah
-                    </button>
 
-                    <div class="btn-group" id="dropdown-icon-demo">
-                        <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bx bx-filter-alt"></i> Filter
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Ikan Koi</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Ikan Hias</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Grid Card -->
-                <div class="row ms-3">
-                    <!-- loopingnya datanya disini -->
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <img class="card-img-top" src="../assets/img/elements/IkanChanna.jpg" alt="Card image cap" />
-                            <div class="card-body">
-
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    This is a longer card with supporting text below as a natural lead-in to additional
-                                    content.
-                                    This content is a little bit longer.
-                                </p>
-                            </div>
-
-                            <div class="card-body">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalScrollable">
-                                    Selengkapnya
-                                </button>
-                            </div>
+                <!-- <h5 class="card-header">Default</h5> -->
+                <div class="card-body">
+                    <?php if (session()->getFlashData('pesan')) : ?>
+                        <div class="alert alert-success alert-dismissible alert-notif" role="alert">
+                            <?= session()->getFlashData('pesan'); ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
+
+                    <?php endif; ?>
+                    <?= form_open('jenisikan/tambah') ?>
+                    <div class="mb-3">
+                        <label for="defaultFormControlInput" class="form-label">Jenis Ikan</label>
+                        <input type="text" class="form-control" placeholder="Masukkan Jenis Ikan" name="jenis_ikan" />
+                        <!-- <div id="defaultFormControlHelp" class="form-text">
+                            We'll never share your details with anyone else.
+                        </div> -->
+                        <small class="text-danger"> <?= $validation->getError('jenis_ikan') ?> </small>
+
                     </div>
-                    <!-- sampai sini -->
-
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <img class="card-img-top" src="../assets/img/elements/IkanChanna.jpg" alt="Card image cap" />
-                            <div class="card-body">
-
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    This is a longer card with supporting text below as a natural lead-in to additional
-                                    content.
-                                    This content is a little bit longer.
-                                </p>
-                            </div>
-
-                            <div class="card-body">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalScrollable">
-                                    Selengkapnya
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                    <?= form_close() ?>
                 </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <!-- Basic Bootstrap Table -->
+                <h5 class="card-header">Tabel Jenis Ikan</h5>
+                <div class="table-responsive text-nowrap">
+                    <table class="table">
+                        <thead class="bg-primary">
+                            <tr>
+                                <th>No</th>
+                                <th>Jenis Ikan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            <?php
+                            $no = 1;
+                            foreach ($getData as $row) {
+                            ?>
+                                <tr>
+                                    <td>
+                                        <?= $no++ ?>
+                                    </td>
+                                    <td><?= $row['nama_jenis_ikan'] ?></td>
+
+                                    <td>
+                                        <button class="btn btn-sm btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#editModal<?= $row['id_jenis'] ?>"> <i class="bx bx-edit-alt me-1"></i> Edit</button>
+
+                                        <button class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $row['id_jenis'] ?>"> <i class="bx bx-trash me-1"></i> Hapus</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Modal Edit-->
+                                <div class="modal fade" id="editModal<?= $row['id_jenis'] ?>" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel1">Form Edit</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <?= form_open('jenisikan/edit') ?>
+
+                                                <div class="row">
+                                                    <div class="col mb-3">
+                                                        <label for="nameBasic" class="form-label">Jenis Ikan</label>
+                                                        <input type="text" name="jenis_ikan" class="form-control" required value="<?= $row['nama_jenis_ikan'] ?>" />
+
+                                                        <input type="text" name="id" class="form-control" required value="<?= $row['id_jenis'] ?>" />
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                    Batal
+                                                </button>
+                                                <button type="submit" class="btn btn-primary">Edit</button>
+                                            </div>
+                                            <?= form_close() ?>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end Modal -->
+
+
+                                <!-- Modal hapus-->
+                                <div class="modal fade" id="hapusModal<?= $row['id_jenis'] ?>" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel1">Peringatan!</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <?= form_open('jenisikan/hapus/' . $row['id_jenis']) ?>
+                                                <p>Apakah Anda Yakin Ingin Menghapus Data ?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                    Batal
+                                                </button>
+                                                <button type="submit" class="btn btn-primary">Hapus</button>
+                                            </div>
+                                            <?= form_close() ?>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end Modal -->
+                            <?php } ?>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--/ Basic Bootstrap Table -->
 
                 <hr>
                 <!-- Basic Pagination -->

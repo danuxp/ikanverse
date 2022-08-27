@@ -63,6 +63,12 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="<?= base_url() ?>/assets/js/config.js"></script>
+
+    <!-- Datatable css -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/libs/dataTables/css/datatables.bootstrap5.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/libs/dataTables/css/responsive.bootstrap5.css">
+<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/libs/dataTables/css/datatables.checkboxes.css">
+<link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/libs/dataTables/css/buttons.bootstrap5.css"> -->
   </head>
 
   <body>

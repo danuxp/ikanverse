@@ -45,8 +45,23 @@ $routes->get('biak', 'Budidaya::biak');
 $routes->get('sterilisasi', 'Budidaya::sterilisasi');
 $routes->get('jenispakan', 'Budidaya::jenispakan');
 
+// jenisikan
+$routes->group('jenisikan', function ($routes) {
+    $routes->get('/', 'JenisIkan::index');
+    $routes->post('tambah', 'JenisIkan::tambah');
+    $routes->post('edit', 'JenisIkan::edit');
+    $routes->post('hapus/(:num)', 'JenisIkan::hapus/$1');
+});
+
+
+// ikan
+$routes->group('jualbeli', function ($routes) {
+    $routes->get('/', 'JualBeli::index');
+
+    $routes->post('tambah-ikan', 'JualBeli::tambah_ikan');
+});
+
 // Jual Beli
-$routes->get('jualbeli', 'JualBeli::index');
 // $routes->get('cekharga', 'JualBeli::cekharga');
 
 // Pengetahuan Ikan

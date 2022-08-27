@@ -9,7 +9,7 @@ class BibitIkan extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
+            'id_bibit'          => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'auto_increment' => true
@@ -38,7 +38,7 @@ class BibitIkan extends Migration
         ]);
 
         // Membuat primary key
-        $this->forge->addKey('id', TRUE);
+        $this->forge->addKey('id_bibit', TRUE);
 
         // Membuat tabel news
         $this->forge->createTable('tbl_bibtikan', TRUE);

@@ -11,44 +11,65 @@
                 <h5 class="modal-title" id="exampleModalLabel1">Tambah Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="d-flex align-items-start align-items-sm-center gap-4">
-                    <img src="../assets/img/avatars/1.png" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
-                    <div class="button-wrapper">
-                        <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                            <span class="d-none d-sm-block">Upload new photo</span>
-                            <i class="bx bx-upload d-block d-sm-none"></i>
-                            <input type="file" id="upload" class="account-file-input" hidden accept="image/png, image/jpeg" />
-                        </label>
-                        <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-                            <i class="bx bx-reset d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Reset</span>
-                        </button>
 
-                        <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
-                    </div>
-                </div>
-            </div>
             <div class="modal-body">
+                <?= form_open_multipart('jualbeli/tambah-ikan') ?>
+
                 <div class="row">
-                    <div class="col mb-3">
-                        <label for="nameBasic" class="form-label">Name</label>
-                        <input type="text" id="nameBasic" class="form-control" placeholder="Enter Name" />
+                    <div class="col mb-2">
+                        <label for="nameBasic" class="form-label">Nama Ikan</label>
+                        <input type="text" name="nama_ikan" class="form-control" placeholder="Masukkan Nama Ikan" required />
                     </div>
                 </div>
-                <div class="row g-2">
+
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <label for="nameBasic" class="form-label">Harga</label>
+                        <input type="text" name="harga" class="form-control" placeholder="Masukkan Harga" required />
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label for="nameBasic" class="form-label">Stok</label>
+                        <input type="text" name="stok" class="form-control" placeholder="Masukkan Stok" required />
+                    </div>
+                </div>
+
+                <div class="form-check form-switch mb-2">
+                    <label class="form-check-label">Tersedia <small class="text-danger">*klik jika tersedia</small> </label>
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" <?php
+                                                                                                $check = 'checked';
+
+                                                                                                if ($check == 'checked') {
+                                                                                                    echo 'value="1"';
+                                                                                                } ?> name="tersedia" />
+                </div>
+
+
+                <div class="row mb-2">
                     <div>
-                        <label for="exampleFormControlTextarea1" class="form-label">Textarea</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <label for="formFile" class="form-label">Gambar</label>
+                        <input class="form-control" type="file" name="gambar" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="exampleFormControlSelect1" class="form-label">Jenis Ikan</label>
+                        <select class="form-select" name="jenis_ikan">
+                            <?php foreach ($jenis_ikan as $row) { ?>
+                                <option value="<?= $row['id_jenis'] ?>"><?= $row['nama_jenis_ikan'] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Close
+                    Batal
                 </button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Tambah</button>
             </div>
+            <?= form_close() ?>
+
         </div>
     </div>
 </div>
@@ -73,6 +94,22 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="navs-pills-top-home" role="tabpanel">
+                        <?php if (session()->getFlashData('pesan')) : ?>
+                            <div class="alert alert-success alert-dismissible alert-notif" role="alert">
+                                <?= session()->getFlashData('pesan'); ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($validation->getError('gambar') == true) :
+                        ?>
+                            <div class="alert alert-danger alert-dismissible  alert-notif" role="alert">
+                                <?= $validation->getError('gambar');
+                                ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php endif; ?>
+
                         <div class="demo-inline-spacing mb-4">
                             <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalTambah">
                                 <i class="bx bx-plus"></i> Tambah
@@ -94,27 +131,31 @@
                         </div>
                         <div class="row">
                             <!-- loopingnya datanya disini -->
-                            <div class="col-md-4 mb-4">
-                                <div class="card h-100">
-                                    <img class="card-img-top" src="../assets/img/elements/IkanChanna.jpg" alt="Card image cap" />
-                                    <div class="card-body">
+                            <?php
+                            foreach ($getData as $row) {
+                            ?>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100">
+                                        <img class="card-img-top" src="../assets/img/elements/IkanChanna.jpg" alt="Card image cap" />
+                                        <div class="card-body">
 
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">
-                                            This is a longer card with supporting text below as a natural lead-in to additional
-                                            content.
-                                            This content is a little bit longer.
-                                        </p>
-                                    </div>
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">
+                                                This is a longer card with supporting text below as a natural lead-in to additional
+                                                content.
+                                                This content is a little bit longer.
+                                            </p>
+                                        </div>
 
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalScrollable">
-                                            Selengkapnya
-                                        </button>
+                                        <div class="card-body">
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalScrollable">
+                                                Selengkapnya
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- sampai sini -->
+                                <!-- sampai sini -->
+                            <?php } ?>
 
                             <hr>
                             <!-- Basic Pagination -->

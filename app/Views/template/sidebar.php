@@ -59,6 +59,14 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>
         </li>
+
+        <li class="menu-item">
+            <a href="<?= base_url('jenisikan') ?>" class="menu-link">
+                <i class='menu-icon tf-icons bx bx-folder-plus'></i>
+                <div data-i18n="Analytics">Jenis Ikan</div>
+            </a>
+        </li>
+
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
@@ -95,20 +103,17 @@
             </a>
         </li>
 
+
+
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <i class="menu-icon tf-icons bx bx-message-alt-check"></i>
                 <div data-i18n="Misc">Pengetahuan Ikan</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="<?= base_url('pengolahanikan') ?>" class="menu-link">
                         <div data-i18n="Error">Pengolahan Ikan</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="<?= base_url('jenisikan') ?>" class="menu-link">
-                        <div data-i18n="Under Maintenance">Jenis Ikan</div>
                     </a>
                 </li>
                 <li class="menu-item">
