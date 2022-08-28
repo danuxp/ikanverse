@@ -16,14 +16,10 @@ class BerkembangBiak extends Migration
             ],
             'cara_berkembangbiak'       => [
                 'type'           => 'TEXT',
-                'null'           => null
+                'null'           => true
             ],
             'id_ikan'      => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '5',
-            ],
-            'id_jenis' => [
-                'type'           => 'VARCHAR',
+                'type'           => 'INT',
                 'constraint'     => '5',
             ],
         ]);

@@ -23,9 +23,6 @@
                     <div class="mb-3">
                         <label for="defaultFormControlInput" class="form-label">Jenis Ikan</label>
                         <input type="text" class="form-control" placeholder="Masukkan Jenis Ikan" name="jenis_ikan" />
-                        <!-- <div id="defaultFormControlHelp" class="form-text">
-                            We'll never share your details with anyone else.
-                        </div> -->
                         <small class="text-danger"> <?= $validation->getError('jenis_ikan') ?> </small>
 
                     </div>
@@ -112,6 +109,8 @@
                                             </div>
                                             <div class="modal-body">
                                                 <?= form_open('jenisikan/hapus/' . $row['id_jenis']) ?>
+
+                                                <input type="hidden" name="_method" value="DELETE">
                                                 <p>Apakah Anda Yakin Ingin Menghapus Data ?</p>
                                             </div>
                                             <div class="modal-footer">

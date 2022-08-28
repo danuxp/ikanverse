@@ -79,7 +79,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="<?= base_url('biak') ?>" class="menu-link">
+                    <a href="<?= base_url('berkembang-biak') ?>" class="menu-link">
                         <div data-i18n="Notifications">Berkembang Biak</div>
                     </a>
                 </li>

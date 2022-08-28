@@ -4,19 +4,19 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MIkan extends Model
+class MBibit extends Model
 {
-    protected $table            = 'tbl_ikan';
-    protected $primaryKey       = 'id_ikan';
+    protected $table            = 'tbl_bibitikan';
+    protected $primaryKey       = 'id_bibit';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['nama_ikan', 'harga', 'gambar', 'tersedia', 'stok', 'id_jenis'];
+    protected $allowedFields    = ['nama_bibit', 'harga', 'gambar', 'tersedia', 'stok', 'id_jenis'];
 
     public function getData($id = false)
     {
         if ($id === false) {
             return $this->findAll();
         } else {
-            return $this->getWhere(['id_ikan' => $id]);
+            return $this->getWhere(['id_bibit' => $id]);
         }
     }
 

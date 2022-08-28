@@ -16,10 +16,10 @@ class PengolahanIkan extends Migration
             ],
             'cara_pengolahan'       => [
                 'type'           => 'TEXT',
-                'null'           => null
+                'null'           => true
             ],
             'id_ikan'      => [
-                'type'           => 'VARCHAR',
+                'type'           => 'INT',
                 'constraint'     => '5',
             ],
             'id_jenis' => [

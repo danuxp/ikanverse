@@ -16,7 +16,7 @@ class Ikan extends Migration
             ],
             'nama_ikan'       => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '155'
+                'constraint'     => '255'
             ],
             'harga'      => [
                 'type'           => 'VARCHAR',

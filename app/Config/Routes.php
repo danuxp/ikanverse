@@ -39,26 +39,55 @@ $routes->set404Override();
 $routes->get('login', 'Login::index');
 $routes->get('registrasi', 'Login::registrasi');
 
-$routes->get('/', 'Home::index');
-$routes->get('budidaya', 'Budidaya::index');
+// budidaya
+$routes->group('budidaya', function ($routes) {
+    $routes->get('/', 'Budidaya::index');
+    $routes->post('tambah-budidaya', 'Budidaya::tambah_budidaya');
+    $routes->post('edit-budidaya', 'Budidaya::edit_budidaya');
+    $routes->delete('hapus-budidaya/(:num)', 'Budidaya::hapus_budidaya/$1');
+});
+
+// berkembang biak
+$routes->group('berkembang-biak', function ($routes) {
+    $routes->get('/', 'Budidaya::berkembang_biak');
+    $routes->post('tambah-berkembangbiak', 'Budidaya::tambah_berkembangbiak');
+    $routes->post('edit-berkembangbiak', 'Budidaya::edit_berkembangbiak');
+    $routes->delete('hapus-berkembangbiak/(:num)', 'Budidaya::hapus_berkembangbiak/$1');
+});
+
+// berkembang biak
+$routes->group('sterilisasi', function ($routes) {
+    $routes->get('/', 'Budidaya::sterilisasi');
+    $routes->post('tambah-steril', 'Budidaya::tambah_steril');
+    $routes->post('edit-steril', 'Budidaya::edit_steril');
+    $routes->delete('hapus-steril/(:num)', 'Budidaya::hapus_steril/$1');
+});
+
+
 $routes->get('biak', 'Budidaya::biak');
 $routes->get('sterilisasi', 'Budidaya::sterilisasi');
 $routes->get('jenispakan', 'Budidaya::jenispakan');
+
 
 // jenisikan
 $routes->group('jenisikan', function ($routes) {
     $routes->get('/', 'JenisIkan::index');
     $routes->post('tambah', 'JenisIkan::tambah');
     $routes->post('edit', 'JenisIkan::edit');
-    $routes->post('hapus/(:num)', 'JenisIkan::hapus/$1');
+    $routes->delete('hapus/(:num)', 'JenisIkan::hapus/$1');
 });
 
 
 // ikan
 $routes->group('jualbeli', function ($routes) {
     $routes->get('/', 'JualBeli::index');
-
     $routes->post('tambah-ikan', 'JualBeli::tambah_ikan');
+    $routes->post('edit-ikan', 'JualBeli::edit_ikan');
+    $routes->delete('hapus-ikan/(:num)', 'JualBeli::hapus_ikan/$1');
+
+    $routes->post('tambah-bibit', 'JualBeli::tambah_bibit');
+    $routes->post('edit-bibit', 'JualBeli::edit_bibit');
+    $routes->delete('hapus-bibit/(:num)', 'JualBeli::hapus_bibit/$1');
 });
 
 // Jual Beli

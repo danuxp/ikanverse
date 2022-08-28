@@ -16,7 +16,7 @@ class BibitIkan extends Migration
             ],
             'nama_bibit'       => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '125'
+                'constraint'     => '225'
             ],
             'harga'      => [
                 'type'           => 'VARCHAR',
@@ -26,26 +26,30 @@ class BibitIkan extends Migration
                 'type'           => 'TEXT',
                 'null'           => true,
             ],
-            'ketersediaan'      => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '30',
-                'default'        => 'draft',
+            'tersedia'      => [
+                'type'           => 'INT',
+                'constraint'     => '1',
+                'null'        => true
             ],
-            'stock'      => [
+            'stok'      => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '20',
             ],
+            'id_jenis' => [
+                'type' => 'INT',
+                'contraint' => 5
+            ]
         ]);
 
         // Membuat primary key
         $this->forge->addKey('id_bibit', TRUE);
 
         // Membuat tabel news
-        $this->forge->createTable('tbl_bibtikan', TRUE);
+        $this->forge->createTable('tbl_bibitikan', TRUE);
     }
 
     public function down()
     {
-        $this->forge->dropTable('tbl_bibtikan');
+        $this->forge->dropTable('tbl_bibitikan');
     }
 }
