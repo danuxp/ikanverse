@@ -6,8 +6,8 @@ use App\Models\MBerkembangbiak;
 use App\Models\MBudidaya;
 use App\Models\MIkan;
 use App\Models\MJenisIkan;
+use App\Models\MPakan;
 use App\Models\MSterilisasi;
-
 
 class Budidaya extends BaseController
 {
@@ -18,7 +18,7 @@ class Budidaya extends BaseController
         $this->berkembangbiak = new MBerkembangbiak();
         $this->jenis_ikan = new MJenisIkan();
         $this->steril = new MSterilisasi();
-        helper("form");
+        $this->pakan = new MPakan();
     }
 
     public function index()
@@ -171,6 +171,45 @@ class Budidaya extends BaseController
 
     public function jenispakan()
     {
-        return view('jenispakan');
+        $data = [
+            'judul' => 'Cara Pakan',
+            'ikan' => $this->ikan->getData(),
+            'getData' => $this->pakan->getDataJoin(),
+            'jenis_ikan' => $this->jenis_ikan->getData()
+
+        ];
+        return view('jenispakan', $data);
+    }
+
+    public function tambah_pakan()
+    {
+        $data = [
+            'cara_jenispakan' => $this->request->getVar("pakan"),
+            'id_ikan' => $this->request->getVar("id_ikan")
+        ];
+
+        $this->pakan->save($data);
+        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
+        return redirect()->back();
+    }
+
+    public function edit_pakan()
+    {
+        $data = [
+            'id' => $this->request->getVar("id"),
+            'cara_jenispakan' => $this->request->getVar("pakan"),
+            'id_ikan' => $this->request->getVar("id_ikan")
+        ];
+
+        $this->pakan->save($data);
+        session()->setFlashdata('pesan', 'Data Berhasil Diedit');
+        return redirect()->back();
+    }
+
+    public function hapus_pakan($id)
+    {
+        $this->pakan->delete($id);
+        session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
+        return redirect()->back();
     }
 }

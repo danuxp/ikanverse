@@ -63,6 +63,39 @@ $routes->group('sterilisasi', function ($routes) {
     $routes->delete('hapus-steril/(:num)', 'Budidaya::hapus_steril/$1');
 });
 
+// pakan
+$routes->group('jenis-pakan', function ($routes) {
+    $routes->get('/', 'Budidaya::jenispakan');
+    $routes->post('tambah-pakan', 'Budidaya::tambah_pakan');
+    $routes->post('edit-pakan', 'Budidaya::edit_pakan');
+    $routes->delete('hapus-pakan/(:num)', 'Budidaya::hapus_pakan/$1');
+});
+
+// pengolahan 
+$routes->group('pengolahan', function ($routes) {
+    $routes->get('/', 'Pengetahuanikan::jenispengolahan');
+    $routes->post('tambah-pengolahan', 'Pengetahuanikan::tambah_pengolahan');
+    $routes->post('edit-pengolahan', 'Pengetahuanikan::edit_pengolahan');
+    $routes->delete('hapus-pengolahan/(:num)', 'Pengetahuanikan::hapus_pengolahan/$1');
+});
+
+// sifat ikan 
+$routes->group('sifat-ikan', function ($routes) {
+    $routes->get('/', 'Pengetahuanikan::sifatikan');
+    $routes->post('tambah-sifatikan', 'Pengetahuanikan::tambah_sifatikan');
+    $routes->post('edit-sifatikan', 'Pengetahuanikan::edit_sifatikan');
+    $routes->delete('hapus-sifatikan/(:num)', 'Pengetahuanikan::hapus_sifatikan/$1');
+});
+
+
+// habitat ikan 
+$routes->group('habitat-ikan', function ($routes) {
+    $routes->get('/', 'Pengetahuanikan::habitatikan');
+    $routes->post('tambah-habitat', 'Pengetahuanikan::tambah_habitat');
+    $routes->post('edit-habitat', 'Pengetahuanikan::edit_habitat');
+    $routes->delete('hapus-habitat/(:num)', 'Pengetahuanikan::hapus_habitat/$1');
+});
+
 
 $routes->get('biak', 'Budidaya::biak');
 $routes->get('sterilisasi', 'Budidaya::sterilisasi');

@@ -22,10 +22,6 @@ class PengolahanIkan extends Migration
                 'type'           => 'INT',
                 'constraint'     => '5',
             ],
-            'id_jenis' => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '5',
-            ],
         ]);
 
         // Membuat primary key

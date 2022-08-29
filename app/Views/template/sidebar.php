@@ -89,7 +89,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="<?= base_url('jenispakan') ?>" class="menu-link">
+                    <a href="<?= base_url('jenis-pakan') ?>" class="menu-link">
                         <div data-i18n="Connections">Jenis Pakan</div>
                     </a>
                 </li>
@@ -117,12 +117,12 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="<?= base_url('sifatikan') ?>" class="menu-link">
+                    <a href="<?= base_url('sifat-ikan') ?>" class="menu-link">
                         <div data-i18n="Under Maintenance">Sifat Ikan</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="<?= base_url('habitatikan') ?>" class="menu-link">
+                    <a href="<?= base_url('habitat-ikan') ?>" class="menu-link">
                         <div data-i18n="Under Maintenance">Habitat Ikan</div>
                     </a>
                 </li>

@@ -11,74 +11,53 @@
                 <h5 class="modal-title" id="exampleModalLabel1">Tambah Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
             <div class="modal-body">
                 <div class="row">
+                    <?= form_open('habitat-ikan/tambah-habitat') ?>
                     <div class="col mb-3">
-                        <label for="nameBasic" class="form-label">Name</label>
-                        <input type="text" id="nameBasic" class="form-control" placeholder="Enter Name" />
+                        <label for="exampleFormControlSelect1" class="form-label">Ikan</label>
+                        <select class="form-select" name="id_ikan">
+                            <?php foreach ($ikan as $row) { ?>
+                                <option value="<?= $row['id_ikan'] ?>"><?= $row['nama_ikan'] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
                 <div class="row g-2">
-                    <div class="col mb-0">
-                        <label for="emailBasic" class="form-label">Email</label>
-                        <input type="text" id="emailBasic" class="form-control" placeholder="xxxx@xxx.xx" />
-                    </div>
-                    <div class="col mb-0">
-                        <label for="dobBasic" class="form-label">DOB</label>
-                        <input type="text" id="dobBasic" class="form-control" placeholder="DD / MM / YY" />
+                    <div>
+                        <label for="exampleFormControlTextarea1" class="form-label">Habitat Ikan</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="habitat"></textarea>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Close
+                    Batal
                 </button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Tambah</button>
             </div>
+            <?= form_close() ?>
         </div>
     </div>
 </div>
 <!-- end modal -->
 
 
-<!-- Modal selengkapnya -->
-<div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalScrollableTitle">Cara Budidaya</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis
-                    in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
-                    vestibulum at eros.
-                </p>
-                <p>
-                    Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                    Vivamus sagittis
-                    lacus vel augue laoreet rutrum faucibus dolor auctor.
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Close
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-
-
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Pengetahuan Ikan /</span> Habitat Ikan </h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Pengetahuan Ikan /</span> <?= $judul ?> </h4>
 
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-4">
-                <div class="demo-inline-spacing ms-4 mb-4">
+                <div class="demo-inline-spacing mx-4 ">
+                    <?php if (session()->getFlashData('pesan')) : ?>
+                        <div class="alert alert-success alert-dismissible alert-notif" role="alert">
+                            <?= session()->getFlashData('pesan'); ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                    <?php endif; ?>
                     <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalTambah">
                         <i class="bx bx-plus"></i> Tambah
                     </button>
@@ -88,63 +67,119 @@
                             <i class="bx bx-filter-alt"></i> Filter
                         </button>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Ikan Koi</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Ikan Hias</a>
-                            </li>
+                            <?php foreach ($jenis_ikan as $row) { ?>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center"><?= $row['nama_jenis_ikan'] ?></a>
+                                </li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Grid Card -->
-                <div class="row ms-3">
-                    <!-- loopingnya datanya disini -->
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <img class="card-img-top" src="../assets/img/elements/IkanChanna.jpg" alt="Card image cap" />
-                            <div class="card-body">
 
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    This is a longer card with supporting text below as a natural lead-in to additional
-                                    content.
-                                    This content is a little bit longer.
-                                </p>
-                            </div>
+                <!-- loopingnya datanya disini -->
+                <h5 class="card-header">Tabel Habitat Ikan</h5>
+                <div class="table-responsive text-nowrap">
+                    <table class="table">
+                        <thead class="bg-primary">
+                            <tr>
+                                <th>No</th>
+                                <th>Ikan</th>
+                                <th>Jenis Ikan</th>
+                                <th>Habitat Ikan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            <?php
+                            $no = 1;
+                            foreach ($getData as $row) {
+                            ?>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><?= $row['nama_ikan'] ?></td>
+                                    <td><?= $row['nama_jenis_ikan'] ?></td>
+                                    <td><?= $row['habitat'] ?></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#modalEdit<?= $row['id'] ?>"> <i class="bx bx-edit-alt me-1"></i> Edit</button>
 
-                            <div class="card-body">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalScrollable">
-                                    Selengkapnya
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- sampai sini -->
+                                        <button class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#modalHapus<?= $row['id'] ?>"> <i class="bx bx-trash me-1"></i> Hapus</button>
+                                    </td>
+                                </tr>
 
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <img class="card-img-top" src="../assets/img/elements/IkanChanna.jpg" alt="Card image cap" />
-                            <div class="card-body">
 
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    This is a longer card with supporting text below as a natural lead-in to additional
-                                    content.
-                                    This content is a little bit longer.
-                                </p>
-                            </div>
+                                <!-- Modal Edit-->
+                                <div class="modal fade" id="modalEdit<?= $row['id'] ?>" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel1">Edit Data</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
 
-                            <div class="card-body">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalScrollable">
-                                    Selengkapnya
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <?= form_open('habitat-ikan/edit-habitat') ?>
+                                                    <div class="col mb-3">
+                                                        <input type="hidden" name="id" class="form-control" value="<?= $row['id'] ?>" />
 
+                                                        <label for="exampleFormControlSelect1" class="form-label">Ikan</label>
+                                                        <select class="form-select" name="id_ikan">
+                                                            <?php foreach ($ikan as $rowIkan) { ?>
+                                                                <option <?= ($row['id_ikan'] == $rowIkan['id_ikan']) ? 'selected' : '' ?> value="<?= $rowIkan['id_ikan'] ?>"><?= $rowIkan['nama_ikan'] ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row g-2">
+                                                    <div>
+                                                        <label for="exampleFormControlTextarea1" class="form-label">Cara Pengolahan</label>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="habitat"><?= $row['habitat'] ?></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                    Batal
+                                                </button>
+                                                <button type="submit" class="btn btn-primary">Edit</button>
+                                            </div>
+                                            <?= form_close() ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end modal -->
+
+                                <!-- Modal hapus-->
+                                <div class="modal fade" id="modalHapus<?= $row['id'] ?>" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel1">Peringatan!</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <?= form_open('habitat-ikan/hapus-habitat/' . $row['id']) ?>
+                                                <p>Apakah Anda Yakin Ingin Menghapus Data ?</p>
+                                                <input type="hidden" name="_method" value="DELETE">
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                    Batal
+                                                </button>
+                                                <button type="submit" class="btn btn-primary">Hapus</button>
+                                            </div>
+                                            <?= form_close() ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end Modal -->
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
+                <!-- sampai sini -->
 
                 <hr>
                 <!-- Basic Pagination -->
