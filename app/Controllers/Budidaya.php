@@ -19,10 +19,14 @@ class Budidaya extends BaseController
         $this->jenis_ikan = new MJenisIkan();
         $this->steril = new MSterilisasi();
         $this->pakan = new MPakan();
+        helper("form");
     }
 
     public function index()
     {
+        if (session()->get('isLogin') == false) {
+            return redirect()->to('/');
+        }
         $data = [
             'judul' => 'Cara Budidaya',
             'ikan' => $this->ikan->getData(),
@@ -74,6 +78,9 @@ class Budidaya extends BaseController
 
     public function berkembang_biak()
     {
+        if (session()->get('isLogin') == false) {
+            return redirect()->to('/');
+        }
         $data = [
             'judul' => 'Cara Berkembang Biak',
             'ikan' => $this->ikan->getData(),
@@ -123,6 +130,9 @@ class Budidaya extends BaseController
 
     public function sterilisasi()
     {
+        if (session()->get('isLogin') == false) {
+            return redirect()->to('/');
+        }
         $data = [
             'judul' => 'Cara Sterilisasi',
             'ikan' => $this->ikan->getData(),
@@ -171,6 +181,9 @@ class Budidaya extends BaseController
 
     public function jenispakan()
     {
+        if (session()->get('isLogin') == false) {
+            return redirect()->to('/');
+        }
         $data = [
             'judul' => 'Cara Pakan',
             'ikan' => $this->ikan->getData(),

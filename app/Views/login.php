@@ -19,11 +19,18 @@
            <!-- /Logo -->
            <!-- <h4 class="mb-2">Welcome to Sneat! 👋</h4> -->
            <p class="mb-4 text-center">Silahkan <strong> Login </strong> terlebih dahulu!</p>
+           <?php if (session()->getFlashData('pesan')) : ?>
+             <div class="alert alert-danger alert-dismissible alert-notif" role="alert">
+               <?= session()->getFlashData('pesan'); ?>
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+             </div>
 
-           <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+           <?php endif; ?>
+           <form id="formAuthentication" class="mb-3" action="<?= base_url('cek-login') ?>" method="POST">
              <div class="mb-3">
-               <label for="email" class="form-label">Username</label>
-               <input type="text" class="form-control" id="email" name="email-username" placeholder="Enter your email or username" autofocus />
+               <label class="form-label">Username</label>
+               <input type="text" class="form-control" name="username" placeholder="Masukkan username" autofocus />
+               <small class="text-danger"> <?= $validation->getError('username') ?> </small>
              </div>
              <div class="mb-3 form-password-toggle">
                <div class="d-flex justify-content-between">
@@ -31,11 +38,13 @@
                  <!-- <a href="auth-forgot-password-basic.html">
                    <small>Forgot Password?</small>
                  </a> -->
+
                </div>
                <div class="input-group input-group-merge">
                  <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                </div>
+               <small class="text-danger"> <?= $validation->getError('password') ?> </small>
              </div>
              <!-- <div class="mb-3">
                <div class="form-check">
@@ -48,12 +57,12 @@
              </div>
            </form>
 
-           <p class="text-center">
+           <!-- <p class="text-center">
              <span>Belum Punya Akun ?</span>
              <a href="<?= base_url('registrasi') ?>">
                <span>Registrasi</span>
              </a>
-           </p>
+           </p> -->
          </div>
        </div>
        <!-- /Register -->

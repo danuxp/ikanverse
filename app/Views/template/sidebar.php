@@ -130,9 +130,16 @@
         </li>
 
         <li class="menu-item">
-            <a href="<?= base_url('olahbibit') ?>" class="menu-link">
+            <a href="<?= base_url('olah-bibit') ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-package"></i>
                 <div data-i18n="Boxicons">Olah Bibit</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="<?= base_url('users') ?>" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-plus"></i>
+                <div data-i18n="Boxicons">Add Users</div>
             </a>
         </li>
     </ul>

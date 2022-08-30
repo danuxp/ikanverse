@@ -35,8 +35,16 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+$routes->get('dashboard', 'Home::index');
 
-$routes->get('login', 'Login::index');
+// $routes->group('login', function ($routes) {
+// });
+$routes->get('/', 'Login::index');
+$routes->post('cek-login', 'Login::cek_login');
+$routes->get('logout', 'Login::logout');
+
+
+
 $routes->get('registrasi', 'Login::registrasi');
 
 // budidaya
@@ -97,9 +105,9 @@ $routes->group('habitat-ikan', function ($routes) {
 });
 
 
-$routes->get('biak', 'Budidaya::biak');
-$routes->get('sterilisasi', 'Budidaya::sterilisasi');
-$routes->get('jenispakan', 'Budidaya::jenispakan');
+// $routes->get('biak', 'Budidaya::biak');
+// $routes->get('sterilisasi', 'Budidaya::sterilisasi');
+// $routes->get('jenispakan', 'Budidaya::jenispakan');
 
 
 // jenisikan
@@ -127,14 +135,25 @@ $routes->group('jualbeli', function ($routes) {
 // $routes->get('cekharga', 'JualBeli::cekharga');
 
 // Pengetahuan Ikan
-$routes->get('pengolahanikan', 'Pengetahuanikan::index');
-$routes->get('jenisikan', 'Pengetahuanikan::jenisikan');
-$routes->get('sifatikan', 'Pengetahuanikan::sifatikan');
-$routes->get('habitatikan', 'Pengetahuanikan::habitatikan');
+// $routes->get('pengolahanikan', 'Pengetahuanikan::index');
+// $routes->get('jenisikan', 'Pengetahuanikan::jenisikan');
+// $routes->get('sifatikan', 'Pengetahuanikan::sifatikan');
+// $routes->get('habitatikan', 'Pengetahuanikan::habitatikan');
 
-$routes->get('olahbibit', 'Olahbibit::olahbibit');
+$routes->group('olah-bibit', function ($routes) {
+    $routes->get('/', 'Olahbibit::olahbibit');
+    $routes->post('tambah-bibit', 'Olahbibit::tambah_bibit');
+    $routes->post('edit-bibit', 'Olahbibit::edit_bibit');
+    $routes->delete('hapus-bibit/(:num)', 'Olahbibit::hapus_bibit/$1');
+});
 
 
+$routes->group('users', function ($routes) {
+    $routes->get('/', 'Users::index');
+    $routes->post('tambah', 'Users::tambah');
+    // $routes->post('edit-bibit', 'Olahbibit::edit_bibit');
+    $routes->delete('hapus/(:num)', 'Users::hapus/$1');
+});
 
 
 

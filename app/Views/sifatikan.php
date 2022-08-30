@@ -78,7 +78,7 @@
 
 
                 <!-- loopingnya datanya disini -->
-                <h5 class="card-header">Tabel Cara Budidaya Ikan</h5>
+                <h5 class="card-header">Tabel Sifat Ikan</h5>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
                         <thead class="bg-primary">
@@ -133,7 +133,7 @@
                                                 </div>
                                                 <div class="row g-2">
                                                     <div>
-                                                        <label for="exampleFormControlTextarea1" class="form-label">Cara Pengolahan</label>
+                                                        <label for="exampleFormControlTextarea1" class="form-label">Sifat Ikan</label>
                                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="sifatikan"><?= $row['sifatikan'] ?></textarea>
                                                     </div>
                                                 </div>

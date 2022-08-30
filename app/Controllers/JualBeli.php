@@ -18,6 +18,9 @@ class JualBeli extends BaseController
 
     public function index()
     {
+        if (session()->get('isLogin') == false) {
+            return redirect()->to('/');
+        }
         $data = [
             'judul' => 'Jual Beli',
             'validation' => \Config\Services::validation(),

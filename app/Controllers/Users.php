@@ -2,14 +2,16 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use App\Models\MJenisIkan;
+use App\Models\MUsers;
 
-class JenisIkan extends BaseController
+
+use App\Controllers\BaseController;
+
+class Users extends BaseController
 {
     public function __construct()
     {
-        $this->model = new MJenisIkan();
+        $this->user = new MUsers();
         helper("form");
     }
 
@@ -19,21 +21,21 @@ class JenisIkan extends BaseController
             return redirect()->to('/');
         }
         $data = [
-            'judul' => 'Jenis Ikan',
+            'judul' => 'Users',
             'validation' => \Config\Services::validation(),
-            'getData' => $this->model->getData()
+            'getData' => $this->user->getData()
 
         ];
-        return view('jenisikan', $data);
+        return view('users', $data);
     }
 
     public function tambah()
     {
         if (!$this->validate([
-            'jenis_ikan' => [
+            'username' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Jenis ikan harus diisi'
+                    'required' => 'Username harus diisi'
                 ]
             ]
         ])) {
@@ -41,24 +43,13 @@ class JenisIkan extends BaseController
         }
 
         $data = [
-            'nama_jenis_ikan' => $this->request->getVar("jenis_ikan"),
+            'username' => $this->request->getVar("username"),
+            'password' => password_hash($this->request->getVar("username"), PASSWORD_DEFAULT),
+            'role' => 1
         ];
 
-        $this->model->save($data);
+        $this->user->save($data);
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
-        return redirect()->back();
-    }
-
-    public function edit()
-    {
-        $id = $this->request->getVar('id');
-        $data = [
-            'id_jenis' => $id,
-            'nama_jenis_ikan' => $this->request->getVar("jenis_ikan"),
-        ];
-
-        $this->model->save($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Diedit');
         return redirect()->back();
     }
 

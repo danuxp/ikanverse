@@ -22,6 +22,9 @@ class Pengetahuanikan extends BaseController
 
     public function index()
     {
+        if (session()->get('isLogin') == false) {
+            return redirect()->to('/');
+        }
         $data = [
             'judul' => 'Pengolahan Ikan',
             'ikan' => $this->ikan->getData(),
@@ -71,6 +74,9 @@ class Pengetahuanikan extends BaseController
 
     public function sifatikan()
     {
+        if (session()->get('isLogin') == false) {
+            return redirect()->to('/');
+        }
         $data = [
             'judul' => 'Sifat Ikan',
             'ikan' => $this->ikan->getData(),
@@ -120,6 +126,9 @@ class Pengetahuanikan extends BaseController
 
     public function habitatikan()
     {
+        if (session()->get('isLogin') == false) {
+            return redirect()->to('/');
+        }
         $data = [
             'judul' => 'Habitat Ikan',
             'ikan' => $this->ikan->getData(),
