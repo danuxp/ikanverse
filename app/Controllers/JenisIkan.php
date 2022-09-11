@@ -21,7 +21,10 @@ class JenisIkan extends BaseController
         $data = [
             'judul' => 'Jenis Ikan',
             'validation' => \Config\Services::validation(),
-            'getData' => $this->model->getData()
+            // 'getData' => $this->model->getData(),
+            'getData' => $this->model->paginate(10, 'getData'),
+            'pager' => $this->model->pager
+
 
         ];
         return view('jenisikan', $data);

@@ -24,9 +24,13 @@ class JualBeli extends BaseController
         $data = [
             'judul' => 'Jual Beli',
             'validation' => \Config\Services::validation(),
-            'getData' => $this->model->getDataJoin(),
-            'getData2' => $this->model2->getDataJoin(),
-            'jenis_ikan' => $this->jenis_ikan->getData()
+            'getData' => $this->model->getDataJoin(10, 'getData'),
+            'getData2' => $this->model2->getDataJoin(10, 'getData2'),
+            'jenis_ikan' => $this->jenis_ikan->getData(),
+            'pager' => $this->model->pager,
+            'pager2' => $this->model2->pager,
+
+
         ];
 
         return view('jualbeli', $data);

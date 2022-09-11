@@ -2,14 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Controllers\BaseController;
+
 class Home extends BaseController
 {
     public function index()
     {
-        if (session()->get('isLogin') == false) {
-            return redirect()->to('/');
-        }
-        // return view('welcome_message');
-        return view('dashboard');
+        return view('home');
     }
 }

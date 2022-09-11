@@ -35,17 +35,32 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('dashboard', 'Home::index');
+$routes->get('dashboard', 'Dashboard::index');
 
 // $routes->group('login', function ($routes) {
 // });
-$routes->get('/', 'Login::index');
+$routes->get('login', 'Login::index');
 $routes->post('cek-login', 'Login::cek_login');
 $routes->get('logout', 'Login::logout');
 
 
 
 $routes->get('registrasi', 'Login::registrasi');
+
+
+// home
+$routes->get('/', 'Home::index');
+// $routes->group('home', function ($routes) {
+//     $routes->get('/', 'Home::index');
+// });
+
+// shop
+$routes->group('shop', function ($routes) {
+    $routes->get('/', 'Shop::index');
+    // $routes->post('tambah-home', 'Home::tambah_home');
+    // $routes->post('edit-home', 'Home::edit_home');
+    // $routes->delete('hapus-home/(:num)', 'Home::hapus_home/$1');
+});
 
 // budidaya
 $routes->group('budidaya', function ($routes) {
@@ -147,13 +162,22 @@ $routes->group('olah-bibit', function ($routes) {
     $routes->delete('hapus-bibit/(:num)', 'Olahbibit::hapus_bibit/$1');
 });
 
-
+// users
 $routes->group('users', function ($routes) {
     $routes->get('/', 'Users::index');
     $routes->post('tambah', 'Users::tambah');
     // $routes->post('edit-bibit', 'Olahbibit::edit_bibit');
     $routes->delete('hapus/(:num)', 'Users::hapus/$1');
 });
+
+// setting
+$routes->group('setting', function ($routes) {
+    $routes->get('/', 'Setting::index');
+    // $routes->post('tambah', 'Setting::tambah');
+    $routes->post('edit', 'Setting::edit');
+});
+$routes->get('profile', 'Setting::profile');
+
 
 
 

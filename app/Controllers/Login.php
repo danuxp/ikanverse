@@ -40,12 +40,12 @@ class Login extends BaseController
         $login = new MUsers();
 
         $data = $login->where('username', $username)->first();
-        if ($data) {
-            $session = session();
+        $session = session();
+        if ($data > 0) {
             if (password_verify($password, $data['password'])) {
                 //create session
                 $login = [
-                    'islogin' => true,
+                    'isLogin' => true,
                     'username' => $data['username'],
                     // 'name' => $data['name']
                 ];
@@ -55,6 +55,9 @@ class Login extends BaseController
                 $session->setFlashdata('pesan', 'Email/Password invalid');
                 return redirect()->back();
             }
+        } else {
+            $session->setFlashdata('pesan', 'Belum Terdaftar');
+            return redirect()->back();
         }
     }
 
@@ -62,7 +65,7 @@ class Login extends BaseController
     {
         $session = session();
         $session->destroy();
-        return redirect()->to('/');
+        return redirect()->to('login');
     }
 
     public function registrasi()

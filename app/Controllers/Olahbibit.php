@@ -24,8 +24,9 @@ class Olahbibit extends BaseController
         $data = [
             'judul' => 'Olah Bibit',
             'bibit' => $this->bibit->getData(),
-            'getData' => $this->olah->getDataJoin(),
-            'jenis_ikan' => $this->jenis_ikan->getData()
+            'getData' => $this->olah->getDataJoin(10, 'getData'),
+            'jenis_ikan' => $this->jenis_ikan->getData(),
+            'pager' => $this->olah->pager
 
         ];
         return view('olahbibit', $data);

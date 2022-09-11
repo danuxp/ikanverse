@@ -30,7 +30,9 @@ class Budidaya extends BaseController
         $data = [
             'judul' => 'Cara Budidaya',
             'ikan' => $this->ikan->getData(),
-            'getData' => $this->budidaya->getDataJoin(),
+            'getData' => $this->budidaya->getDataJoin(10, 'getData'),
+
+            'pager' => $this->budidaya->pager,
             'jenis_ikan' => $this->jenis_ikan->getData()
 
             // 'validation' => \Config\Services::validation(),
@@ -84,8 +86,9 @@ class Budidaya extends BaseController
         $data = [
             'judul' => 'Cara Berkembang Biak',
             'ikan' => $this->ikan->getData(),
-            'getData' => $this->berkembangbiak->getDataJoin(),
-            'jenis_ikan' => $this->jenis_ikan->getData()
+            'getData' => $this->berkembangbiak->getDataJoin(10, 'getData'),
+            'jenis_ikan' => $this->jenis_ikan->getData(),
+            'pager' => $this->berkembangbiak->pager,
 
         ];
         return view('biak', $data);
@@ -136,8 +139,9 @@ class Budidaya extends BaseController
         $data = [
             'judul' => 'Cara Sterilisasi',
             'ikan' => $this->ikan->getData(),
-            'getData' => $this->steril->getDataJoin(),
-            'jenis_ikan' => $this->jenis_ikan->getData()
+            'getData' => $this->steril->getDataJoin(10, 'getData'),
+            'jenis_ikan' => $this->jenis_ikan->getData(),
+            'pager' => $this->steril->pager,
 
         ];
         return view('sterilisasi', $data);
@@ -187,8 +191,9 @@ class Budidaya extends BaseController
         $data = [
             'judul' => 'Cara Pakan',
             'ikan' => $this->ikan->getData(),
-            'getData' => $this->pakan->getDataJoin(),
-            'jenis_ikan' => $this->jenis_ikan->getData()
+            'getData' => $this->pakan->getDataJoin(10, 'getData'),
+            'jenis_ikan' => $this->jenis_ikan->getData(),
+            'pager' => $this->pakan->pager,
 
         ];
         return view('jenispakan', $data);
