@@ -7,8 +7,6 @@ use CodeIgniter\Model;
 class MBerkembangbiak extends Model
 {
     protected $table            = 'tbl_berkembangbiak';
-    protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
     protected $allowedFields    = ['cara_berkembangbiak', 'id_ikan'];
 
     // public function getData($id = false)

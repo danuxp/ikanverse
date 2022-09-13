@@ -7,8 +7,6 @@ use CodeIgniter\Model;
 class MOlahbibit extends Model
 {
     protected $table            = 'tbl_olahbibit';
-    protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
     protected $allowedFields    = ['olahbibit', 'id_bibit'];
 
     public function getDataJoin(int $page)

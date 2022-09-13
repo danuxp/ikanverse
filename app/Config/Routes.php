@@ -50,6 +50,22 @@ $routes->get('registrasi', 'Login::registrasi');
 
 // home
 $routes->get('/', 'Home::index');
+$routes->get('tentang', 'Home::tentang');
+$routes->get('cara-budidaya', 'Home::budidaya');
+$routes->get('berkembang-biak', 'Home::berkembang_biak');
+$routes->get('sterilisasi', 'Home::sterilisasi');
+$routes->get('pakan', 'Home::pakan');
+
+$routes->get('pengolahan', 'Home::pengolahan');
+$routes->get('sifat-ikan', 'Home::sifat_ikan');
+$routes->get('habitat-ikan', 'Home::habitat_ikan');
+
+
+
+
+
+
+
 // $routes->group('home', function ($routes) {
 //     $routes->get('/', 'Home::index');
 // });
@@ -95,8 +111,8 @@ $routes->group('jenis-pakan', function ($routes) {
 });
 
 // pengolahan 
-$routes->group('pengolahan', function ($routes) {
-    $routes->get('/', 'Pengetahuanikan::jenispengolahan');
+$routes->group('pengolahan-ikan', function ($routes) {
+    $routes->get('/', 'Pengetahuanikan::index');
     $routes->post('tambah-pengolahan', 'Pengetahuanikan::tambah_pengolahan');
     $routes->post('edit-pengolahan', 'Pengetahuanikan::edit_pengolahan');
     $routes->delete('hapus-pengolahan/(:num)', 'Pengetahuanikan::hapus_pengolahan/$1');

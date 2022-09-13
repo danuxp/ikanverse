@@ -112,7 +112,7 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="<?= base_url('pengolahanikan') ?>" class="menu-link">
+                    <a href="<?= base_url('pengolahan-ikan') ?>" class="menu-link">
                         <div data-i18n="Error">Pengolahan Ikan</div>
                     </a>
                 </li>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Zay Shop eCommerce HTML CSS Template</title>
+    <title><?= $judul ?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -67,7 +67,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="<?= base_url('/') ?>">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="<?= base_url('tentang') ?>">Tentang</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= base_url('shop') ?>">Jual Beli</a>
@@ -80,10 +80,10 @@ https://templatemo.com/tm-559-zay-shop
                                 Budidaya
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Cara Budidaya</a></li>
-                                <li><a class="dropdown-item" href="#">Berkembang Biak</a></li>
-                                <li><a class="dropdown-item" href="#">Sterilisasi</a></li>
-                                <li><a class="dropdown-item" href="#">Pakan</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('cara-budidaya') ?>">Cara Budidaya</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('berkembang-biak') ?>">Berkembang Biak</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('sterilisasi') ?>">Sterilisasi</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('pakan') ?>">Pakan</a></li>
                             </ul>
                         </li>
 
@@ -92,15 +92,15 @@ https://templatemo.com/tm-559-zay-shop
                                 Pengetahuan Ikan
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Pengolahan Ikan</a></li>
-                                <li><a class="dropdown-item" href="#">Sifat Ikan</a></li>
-                                <li><a class="dropdown-item" href="#">Habitat Ikan</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('pengolahan') ?>">Pengolahan Ikan</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('sifat-ikan') ?>">Sifat Ikan</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('habitat-ikan') ?>">Habitat Ikan</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                    <!-- <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
                         <div class="input-group">
                             <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
                             <div class="input-group-text">
@@ -118,6 +118,9 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                    </a> -->
+                    <a href="<?= base_url('login') ?>" class="nav-icon d-none d-lg-inline text-decoration-none">
+                        <i class="fa fa-fw fa-user text-dark mr-2"></i>Login
                     </a>
                 </div>
             </div>

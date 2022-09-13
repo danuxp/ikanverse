@@ -7,8 +7,6 @@ use CodeIgniter\Model;
 class MPakan extends Model
 {
     protected $table            = 'tbl_jenispakan';
-    protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
     protected $allowedFields    = ['cara_jenispakan', 'id_ikan'];
 
     public function getDataJoin(int $page)

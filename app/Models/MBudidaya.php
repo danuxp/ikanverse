@@ -7,8 +7,6 @@ use CodeIgniter\Model;
 class MBudidaya extends Model
 {
     protected $table            = 'tbl_budidaya';
-    protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
     protected $allowedFields    = ['cara_budidaya', 'id_ikan'];
 
     public function getData($id = false)

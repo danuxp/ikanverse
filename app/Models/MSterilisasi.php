@@ -7,8 +7,6 @@ use CodeIgniter\Model;
 class MSterilisasi extends Model
 {
     protected $table            = 'tbl_sterilisasi';
-    protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
     protected $allowedFields    = ['cara_sterilisasi', 'id_ikan'];
 
     public function getDataJoin(int $page)

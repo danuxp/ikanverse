@@ -17,9 +17,9 @@ class Users extends BaseController
 
     public function index()
     {
-        if (session()->get('isLogin') == false) {
-            return redirect()->to('/');
-        }
+        // if (session()->get('isLogin') == false) {
+        //     return redirect()->to('/');
+        // }
         $data = [
             'judul' => 'Users',
             'validation' => \Config\Services::validation(),

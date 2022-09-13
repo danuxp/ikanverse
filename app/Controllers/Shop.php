@@ -19,9 +19,11 @@ class Shop extends BaseController
     public function index()
     {
         $data = [
+            'judul' => 'Jual Beli',
             'jenis_ikan' => $this->jenis_ikan->getData(),
-            'ikan' => $this->ikan->getDataJoin(),
-            'bibit' => $this->bibit->getDataJoin()
+            'ikan' => $this->ikan->getDataJoin(12, 'ikan'),
+            'pager' => $this->ikan->pager,
+            'bibit' => $this->bibit->getDataJoin(12, 'bibit')
         ];
         return view('shop', $data);
     }

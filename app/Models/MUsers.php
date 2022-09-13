@@ -8,7 +8,6 @@ class MUsers extends Model
 {
     protected $table            = 'tbl_user';
     protected $primaryKey       = 'id_user';
-    protected $useAutoIncrement = true;
     protected $allowedFields    = ['username', 'password', 'role'];
 
     public function getData($id = false)
