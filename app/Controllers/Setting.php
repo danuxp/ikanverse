@@ -18,7 +18,7 @@ class Setting extends BaseController
     {
         $data = [
             'judul' => 'Setting',
-            'getData' => $this->model->where('id', 1)->first()
+            'getData' => $this->model->getLimit()->getRowArray()
         ];
         return view('setting', $data);
     }
@@ -27,7 +27,7 @@ class Setting extends BaseController
     {
         $data = [
             'judul' => 'Profile',
-            'getData' => $this->model->where('id', 1)->first()
+            'getData' => $this->model->getLimit()->getRowArray()
         ];
 
         return view('profile', $data);

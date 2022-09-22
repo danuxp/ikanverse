@@ -8,15 +8,14 @@
                 <h5 class="card-header">Profile</h5>
                 <div class="card-body">
                     <table>
-
                         <tr>
                             <td>
                                 Nama Perusahaan
                             </td>
                             <td>:</td>
                             <td>
-                                <?= $getData['nama_perusahaan'] ?>
-                            </td>
+                                <?= (empty($getData['nama_perusahaan'])) ? '' : $getData['nama_perusahaan'] ?>
+                            </td> 
                         </tr>
 
 
@@ -27,7 +26,7 @@
                             <td>:</td>
                             <td>
 
-                                <?= $getData['alamat'] ?>
+                                <?= (empty($getData['alamat'])) ? '' : $getData['alamat'] ?>
                             </td>
                         </tr>
 
@@ -38,8 +37,7 @@
                             </td>
                             <td>:</td>
                             <td>
-
-                                <?= $getData['no_telp'] ?>
+                                <?= (empty($getData['no_telp'])) ? '' : $getData['no_telp'] ?>
                             </td>
                         </tr>
 
@@ -50,7 +48,7 @@
                             <td>:</td>
                             <td>
 
-                                <?= $getData['email'] ?>
+                                <?= (empty($getData['email'])) ? '' : $getData['email'] ?>
                             </td>
                         </tr>
 
@@ -61,7 +59,7 @@
                             <td>:</td>
                             <td>
 
-                                <?= $getData['instagram'] ?>
+                                <?= (empty($getData['instagram'])) ? '' : $getData['instagram'] ?>
                             </td>
                         </tr>
 
@@ -72,7 +70,7 @@
                             <td>:</td>
                             <td>
 
-                                <?= $getData['facebook'] ?>
+                                <?= (empty($getData['facebook'])) ? '' : $getData['facebook'] ?>
                             </td>
                         </tr>
 
