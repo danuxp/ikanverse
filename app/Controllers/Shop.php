@@ -22,8 +22,10 @@ class Shop extends BaseController
             'judul' => 'Jual Beli',
             'jenis_ikan' => $this->jenis_ikan->getData(),
             'ikan' => $this->ikan->getDataJoin(12, 'ikan'),
-            'pager' => $this->ikan->pager,
-            'bibit' => $this->bibit->getDataJoin(12, 'bibit')
+            'bibit' => $this->bibit->getDataJoin(12, 'bibit'),
+            'pager_ikan' => $this->ikan->pager,
+            'pager_bibit' => $this->bibit->pager,
+
         ];
         return view('shop', $data);
     }
