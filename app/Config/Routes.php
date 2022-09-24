@@ -57,8 +57,9 @@ $routes->get('sterilisasi', 'Home::sterilisasi');
 $routes->get('pakan', 'Home::pakan');
 
 $routes->get('pengolahan', 'Home::pengolahan');
-$routes->get('sifat-ikan', 'Home::sifat_ikan');
-$routes->get('habitat-ikan', 'Home::habitat_ikan');
+$routes->get('sifatikan', 'Home::sifat_ikan');
+$routes->get('habitatikan', 'Home::habitat_ikan');
+$routes->get('shop', 'Shop::index');
 
 
 
@@ -71,12 +72,7 @@ $routes->get('habitat-ikan', 'Home::habitat_ikan');
 // });
 
 // shop
-$routes->group('shop', function ($routes) {
-    $routes->get('/', 'Shop::index');
-    // $routes->post('tambah-home', 'Home::tambah_home');
-    // $routes->post('edit-home', 'Home::edit_home');
-    // $routes->delete('hapus-home/(:num)', 'Home::hapus_home/$1');
-});
+
 
 // budidaya
 $routes->group('budidaya', function ($routes) {

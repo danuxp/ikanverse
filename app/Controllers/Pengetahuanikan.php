@@ -28,8 +28,10 @@ class Pengetahuanikan extends BaseController
         $data = [
             'judul' => 'Pengolahan Ikan',
             'ikan' => $this->ikan->getData(),
-            'getData' => $this->pengolahan->getDataJoin(),
-            'jenis_ikan' => $this->jenis_ikan->getData()
+            'getData' => $this->pengolahan->getDataJoin(10, 'getData'),
+            'jenis_ikan' => $this->jenis_ikan->getData(),
+            'pager' => $this->pengolahan->pager
+
 
         ];
         return view('pengolahanikan', $data);
@@ -81,7 +83,9 @@ class Pengetahuanikan extends BaseController
             'judul' => 'Sifat Ikan',
             'ikan' => $this->ikan->getData(),
             'getData' => $this->sifat_ikan->getDataJoin(),
-            'jenis_ikan' => $this->jenis_ikan->getData()
+            'jenis_ikan' => $this->jenis_ikan->getData(),
+            'pager' => $this->sifat_ikan->pager
+
 
         ];
         return view('sifatikan', $data);
@@ -132,8 +136,10 @@ class Pengetahuanikan extends BaseController
         $data = [
             'judul' => 'Habitat Ikan',
             'ikan' => $this->ikan->getData(),
-            'getData' => $this->habitat->getDataJoin(),
-            'jenis_ikan' => $this->jenis_ikan->getData()
+            'getData' => $this->habitat->getDataJoin(10, 'getData'),
+            'jenis_ikan' => $this->jenis_ikan->getData(),
+            'pager' => $this->habitat->pager
+
 
         ];
         return view('habitatikan', $data);
